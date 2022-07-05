@@ -1,0 +1,100 @@
+@import '@dkt-plus/components/base/style/index.less';
+
+@input-border-color: #bedeef;
+@input-border-color-light: mix(@primary-color-white, @input-border-color, 60%);
+@input-border-radius: 8px;
+@input-padding:1px 18px;
+@input-line-height: 42px;
+@input-line-height-large: 60px;
+
+.dkt-input {
+  position: relative;
+  width: 100%;
+  font-family: @font-family;
+  height: @input-line-height;
+  line-height: @input-line-height;
+  display: inline-flex;
+  font-size: 16px;
+  box-sizing: border-box;
+  &.dkt-input--prepend {
+    .dkt-input__wrapper {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+  &.dkt-input--append {
+    .dkt-input__wrapper {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  &.dkt-input--large {
+    height: @input-line-height-large;
+    line-height: @input-line-height-large;
+    font-size: 20px;
+    .dkt-input__wrapper {
+      .dkt-input__inner {
+        line-height: calc(@input-line-height-large - 2px);
+        letter-spacing: 0.48px;
+      }
+    }
+  }
+  .dkt-input__wrapper {
+    width: 100%;
+    box-shadow: 0 0 0 1px @input-border-color inset;
+    border-radius: @input-border-radius;
+    padding: @input-padding;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    box-sizing: border-box;
+    .dkt-input__inner {
+      width: 100%;
+      font-family: inherit;
+      line-height: calc(@input-line-height - 2px);
+      font-size: inherit;
+      letter-spacing: 0.384px;
+      -webkit-appearance: none;
+      flex-grow: 1;
+      border: none;
+      background: none;
+      padding: 0;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .dkt-input__prefix,
+    .dkt-input__suffix {
+      color: @primary-color;
+    }
+    .dkt-input__prefix {
+      margin-right: 10px;
+    }
+    .dkt-input__suffix {
+      margin-left: 10px;
+    }
+  }
+  .dkt-input__prepend,
+  .dkt-input__append {
+    color: @primary-color;
+    border-radius: @input-border-radius;
+    background-color: @input-border-color-light;
+    padding: 20px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+  .dkt-input__prepend {
+    box-shadow: 1px 0 0 0 @input-border-color inset, 0 1px 0 0 @input-border-color inset,
+      0 -1px 0 0 @input-border-color inset;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .dkt-input__append {
+    box-shadow: -1px 0 0 0 @input-border-color inset, 0 1px 0 0 @input-border-color inset,
+      0 -1px 0 0 @input-border-color inset;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

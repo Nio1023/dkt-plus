@@ -1,0 +1,54 @@
+@import "@dkt-plus/components/base/style/index.less";
+
+@color-gray:#687787;
+@color-gray-dark-2:mix(@primary-color-black,@color-gray,20%);
+@color-gray-dark-5:mix(@primary-color-black,@color-gray,40%);
+
+.dkt-button{
+  padding: 9px 40px;
+  border: 2px solid @color-gray;
+  color: @color-gray;
+  background-color: transparent;
+  border-radius: @primary-border-radius;
+  box-sizing: border-box;
+  font-family: @font-family;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  transition: all @transition-time ease-out;
+  &:hover{
+    color: @color-gray-dark-2;
+    border-color: @color-gray-dark-2;
+  }
+  &:active{
+    color: @color-gray-dark-5;
+    border-color: @color-gray-dark-5;
+  }
+  &.disabled{
+    cursor: not-allowed;
+  }
+  &--small{
+    padding: 7px 8px;
+    font-size: 12px;
+    line-height: 18px;
+    border-width: 1px;
+  }
+  &--primary{
+    border: none;
+    background-color: @primary-color;
+    color: @primary-color-white;
+    &:hover{
+      background-color: @primary-color-dark-2;
+    }
+    &:active{
+      background-color: @primary-color-dark-4;
+    }
+    &.disabled{
+      background-color: #7EBEE0;
+      &:hover,&:active{
+        background-color: #7EBEE0;
+      }
+    }
+  }
+}

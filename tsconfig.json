@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@dkt-plus/*": ["packages/*"]
+    },
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "types": ["unplugin-vue-define-options"]
+  },
+  "include": [
+    "docs/**/*.ts",
+    "docs/**/*.d.ts",
+    "docs/**/*.tsx",
+    "docs/**/*.vue",
+    "env.d.ts",
+    "packages/**/*.ts",
+    "packages/**/*.vue"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
