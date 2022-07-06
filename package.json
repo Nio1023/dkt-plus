@@ -1,13 +1,32 @@
 {
   "name": "dkt-plus",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.1.0",
+  "description": "Decathlon component library built in Vue3 with TypeScript.",
+  "keywords": [
+    "vue",
+    "vue3",
+    "vuejs",
+    "component",
+    "ui",
+    "typescript",
+    "dkt"
+  ],
+  "main": "lib/dkt-plus.umd.js",
+  "module": "lib/dkt-plus.es.js",
+  "types": "lib/dkt-plus.es.d.ts",
+  "files": [
+    "lib/*"
+  ],
+  "author": "Nio",
+  "style": "lib/style.css",
   "scripts": {
     "dev": "vite --host --open",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "element-plus": "^2.2.8",
     "less": "^4.1.2",
     "vue": "^3.2.25"
   },
@@ -21,9 +40,24 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^9.1.1",
     "prettier": "^2.7.1",
+    "ts-morph": "^15.1.0",
     "typescript": "^4.5.4",
     "unplugin-vue-define-options": "^0.6.1",
     "vite": "^2.9.7",
+    "vite-plugin-dts": "^1.2.1",
     "vue-tsc": "^0.34.7"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nio1023/dkt-plus.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nio1023/dkt-plus/issues"
+  },
+  "homepage": "https://github.com/Nio1023/dkt-plus#readme"
 }
