@@ -1,11 +1,17 @@
 @import '@dkt-plus/components/base/style/index.less';
 
 @input-border-color: #bedeef;
+@input-placeholder-color: #b9b9b9;
 @input-border-color-light: mix(@primary-color-white, @input-border-color, 60%);
 @input-border-radius: 8px;
-@input-padding:1px 18px;
-@input-line-height: 42px;
-@input-line-height-large: 60px;
+@input-padding:1px 11px;
+@input-font-size: 16px;
+@input-font-size-small: 12px;
+@input-padding-large:1px 15px;
+@input-padding-small:1px 7px;
+@input-line-height: 30px;
+@input-line-height-small: 20px;
+@input-line-height-large: 40px;
 
 .dkt-input {
   position: relative;
@@ -14,7 +20,7 @@
   height: @input-line-height;
   line-height: @input-line-height;
   display: inline-flex;
-  font-size: 16px;
+  font-size: @input-font-size;
   box-sizing: border-box;
   &.dkt-input--prepend {
     .dkt-input__wrapper {
@@ -31,12 +37,43 @@
   &.dkt-input--large {
     height: @input-line-height-large;
     line-height: @input-line-height-large;
-    font-size: 20px;
     .dkt-input__wrapper {
       .dkt-input__inner {
         line-height: calc(@input-line-height-large - 2px);
         letter-spacing: 0.48px;
       }
+    }
+  }
+  &.dkt-input--small {
+    height: @input-line-height-small;
+    line-height: @input-line-height-small;
+    font-size: @input-font-size-small;
+    .dkt-input__wrapper {
+      .dkt-input__inner {
+        line-height: calc(@input-line-height-small - 2px);
+        letter-spacing: 0.48px;
+      }
+    }
+  }
+  &.is-disabled {
+    cursor: not-allowed;
+    .dkt-input__wrapper {
+      background-color: #f5f7fa;
+      box-shadow: 0 0 0 1px #e4e7ed inset;
+      color: @input-placeholder-color;
+    }
+    .dkt-input__prepend {
+      background-color: #f5f7fa;
+      color: @input-placeholder-color;
+      box-shadow: 1px 0 0 0 #e4e7ed inset, 0 1px 0 0 #e4e7ed inset, 0 -1px 0 0 #e4e7ed inset;
+    }
+    .dkt-input__append {
+      background-color: #f5f7fa;
+      color: @input-placeholder-color;
+      box-shadow: -1px 0 0 0 #e4e7ed inset, 0 1px 0 0 #e4e7ed inset, 0 -1px 0 0 #e4e7ed inset;
+    }
+    .dkt-input__inner {
+      cursor: inherit;
     }
   }
   .dkt-input__wrapper {
@@ -62,6 +99,10 @@
       padding: 0;
       outline: none;
       box-sizing: border-box;
+      &::placeholder {
+        color: @input-placeholder-color;
+        font-size: inherit;
+      }
     }
     .dkt-input__prefix,
     .dkt-input__suffix {
@@ -90,7 +131,6 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-
   .dkt-input__append {
     box-shadow: -1px 0 0 0 @input-border-color inset, 0 1px 0 0 @input-border-color inset,
       0 -1px 0 0 @input-border-color inset;

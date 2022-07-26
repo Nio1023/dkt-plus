@@ -1,1 +1,1 @@
-export type inputSizes = ['default', 'large']
+export type inputSizes = ['default', 'large', 'small']
