@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <dkt-input placeholder="请填写" v-model="inputTest" size="large">
+  <dkt-input placeholder="请填写" v-model="inputTest" size="large" maxlength="10">
     <template #prepend> Https:// </template>
     <!-- <template #prefix>
       <svg class="icon" aria-hidden="true">

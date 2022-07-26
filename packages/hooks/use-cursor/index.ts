@@ -2,7 +2,6 @@ import { ref } from 'vue'
 
 import type { ShallowRef } from 'vue'
 
-// Keep input cursor in the correct position when we use formatter.
 export function useCursor(input: ShallowRef<HTMLInputElement | undefined>): [() => void, () => void] {
   const selectionRef = ref<{
     selectionStart?: number

@@ -55,10 +55,14 @@
   import { ref, computed, shallowRef, nextTick, watch, onMounted } from 'vue'
   import { isKorean, isNil } from '@dkt-plus/utils'
   import { UPDATE_MODEL_EVENT } from '@dkt-plus/constants'
+  import { useAttrs, useCursor } from '@dkt-plus/hooks'
 
   const isComposing = ref(false)
   const focused = ref(false)
   const hovering = ref(false)
+
+  const attrs = useAttrs()
+  console.log(attrs.value)
 
   defineOptions({
     name: 'DktInput'
@@ -133,10 +137,16 @@
     }
   }
 
+  const focus = async () => {
+    await nextTick()
+    _ref.value?.focus()
+  }
   const handleFocus = (event: FocusEvent) => {
     focused.value = true
     emit('focus', event)
   }
+
+  const blur = () => _ref.value?.blur()
 
   const handleBlur = (event: FocusEvent) => {
     focused.value = false
@@ -168,6 +178,14 @@
 
   onMounted(() => {
     setNativeInputValue()
+  })
+
+  defineExpose({
+    input,
+    textarea,
+    ref: _ref,
+    focus,
+    blur
   })
 </script>
 <style lang="less" scoped>
