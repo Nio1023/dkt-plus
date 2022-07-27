@@ -1,6 +1,8 @@
 @import '@dkt-plus/components/base/style/index.less';
 
 @input-border-color: #bedeef;
+@input-border-active-color: #0096e1;
+@input-border-active-color-light: mix(@input-border-active-color, @input-border-color, 30%);
 @input-placeholder-color: #b9b9b9;
 @input-border-color-light: mix(@primary-color-white, @input-border-color, 60%);
 @input-border-radius: 8px;
@@ -86,6 +88,13 @@
     justify-content: center;
     flex-grow: 1;
     box-sizing: border-box;
+    transition: box-shadow 0.25s ease-out;
+    &:hover {
+      box-shadow: 0 0 0 1px @input-border-active-color-light inset;
+    }
+    &.is-focused {
+      box-shadow: 0 0 0 1px @input-border-active-color inset;
+    }
     .dkt-input__inner {
       width: 100%;
       font-family: inherit;
@@ -136,5 +145,36 @@
       0 -1px 0 0 @input-border-color inset;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+}
+
+.dkt-textarea {
+  width: 100%;
+  font-family: @font-family;
+  display: inline-block;
+  position: relative;
+  .dkt-textarea__inner {
+    width: 100%;
+    border: none;
+    display: block;
+    font-family: inherit;
+    font-size: @input-font-size;
+    letter-spacing: 0.48px;
+    line-height: 24px;
+    min-height: 34px;
+    padding: 5px 11px;
+    background-image: none;
+    outline: none;
+    resize: vertical;
+    border-radius: @input-border-radius;
+    box-shadow: 0 0 0 1px @input-border-color inset;
+    transition: box-shadow 0.25s ease-out;
+    box-sizing: border-box;
+    &:hover {
+      box-shadow: 0 0 0 1px @input-border-active-color-light inset;
+    }
+    &:focus {
+      box-shadow: 0 0 0 1px @input-border-active-color inset;
+    }
   }
 }

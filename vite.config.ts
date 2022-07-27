@@ -38,6 +38,12 @@ export default defineConfig({
         }
       }
     },
-    outDir: path.resolve(__dirname, 'lib')
+    outDir: path.resolve(__dirname, 'lib'),
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
   }
 })

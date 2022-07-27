@@ -17,7 +17,12 @@
     <div v-if="$slots.prepend" class="dkt-input__prepend">
       <slot name="prepend" />
     </div>
-    <div class="dkt-input__wrapper">
+    <div
+      class="dkt-input__wrapper"
+      :class="{
+        'is-focused': focused
+      }"
+    >
       <div v-if="$slots.prefix" class="dkt-input__prefix">
         <slot name="prefix" />
       </div>
@@ -45,8 +50,22 @@
       <slot name="append" />
     </div>
   </div>
-  <div v-else>
-    <textarea ref="textarea" name="" id="" cols="30" rows="10" v-bind="$attrs"></textarea>
+  <div class="dkt-textarea" v-else>
+    <textarea
+      class="dkt-textarea__inner"
+      ref="textarea"
+      :disabled="disabled"
+      :placeholder="placeholder"
+      @compositionstart="handleCompositionStart"
+      @compositionupdate="handleCompositionUpdate"
+      @compositionend="handleCompositionEnd"
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @change="handleChange"
+      @keydown="handleKeydown"
+      v-bind="$attrs"
+    ></textarea>
   </div>
 </template>
 <script setup lang="ts">
@@ -62,7 +81,6 @@
   const hovering = ref(false)
 
   const attrs = useAttrs()
-  console.log(attrs.value)
 
   defineOptions({
     name: 'DktInput'

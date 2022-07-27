@@ -16,7 +16,6 @@ export const useAttrs = (params: Params = {}): ComputedRef<Record<string, unknow
   const allExcludeKeys = excludeKeys.concat(DEFAULT_EXCLUDE_KEYS)
 
   const instance = getCurrentInstance()
-  console.log(Object.entries(instance?.proxy?.$attrs!))
   if (!instance) {
     console.warn(
       '[use-attrs]: getCurrentInstance() returned null. useAttrs() must be called at the top of a setup function'
