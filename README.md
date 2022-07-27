@@ -1,18 +1,34 @@
-[![OSCS Status](https://www.oscs1024.com/platform/badge/Nio1023/dkt-plus.svg?size=small)](https://www.oscs1024.com/project/Nio1023/dkt-plus?ref=badge_small)
+<p align="center">
+  <img width="300px" src="https://img.alicdn.com/imgextra/i1/352469034/O1CN01T9ksvA2GbcpKW6M03-352469034.png">
+</p>
 
-# Vue 3 + TypeScript + Vite
+<p align="center">
+  <a href="https://www.oscs1024.com/project/Nio1023/dkt-plus?ref=badge_small">
+    <img src="https://www.oscs1024.com/platform/badge/Nio1023/dkt-plus.svg?size=small">
+  </a>
+  <a href="https://www.npmjs.com/package/dkt-plus">
+    <img src="https://img.shields.io/npm/v/dkt-plus.svg?style=flat-square">
+  </a>
+  <a href="https://www.npmjs.com/package/dkt-plus">
+    <img src="https://img.shields.io/npm/dm/dkt-plus.svg?style=flat-square"/>
+  </a>
+  <br>
+</p>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<p align="center">Decathlon Plus - A Vue.js 3 UI library for Decathlon internal Tools</p>
 
-## Recommended IDE Setup
+## Install
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+```sh
+npm i dkt-plus
+```
 
-## Type Support For `.vue` Imports in TS
+## Usage
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
-
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+```ts
+// main.ts
+import DktPlus from '@dkt-plus/dkt-plus'
+const app = createApp(App)
+app.use(DktPlus)
+app.mount('#app')
+```
