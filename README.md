@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300px" src="https://img.alicdn.com/imgextra/i1/352469034/O1CN01T9ksvA2GbcpKW6M03-352469034.png">
+  <img width="200px" src="https://img.alicdn.com/imgextra/i1/352469034/O1CN01T9ksvA2GbcpKW6M03-352469034.png">
 </p>
 
 <p align="center">
@@ -15,7 +15,7 @@
   <br>
 </p>
 
-<p align="center">Decathlon Plus - A Vue.js 3 UI library for Decathlon internal Tools</p>
+<p align="center">Dkt Plus - A Vue.js 3 UI library for internal Tools</p>
 
 ## Install
 
