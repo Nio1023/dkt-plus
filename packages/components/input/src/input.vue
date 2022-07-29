@@ -43,7 +43,13 @@
         @keydown="handleKeydown"
       />
       <div v-if="$slots.suffix" class="dkt-input__suffix">
-        <slot name="suffix" />
+        <span class="dkt-input__suffix--inner">
+          <template>
+            <slot name="suffix" />
+          </template>
+
+          <span></span>
+        </span>
       </div>
     </div>
     <div v-if="$slots.append" class="dkt-input__append">
@@ -94,6 +100,7 @@
     disabled?: boolean
     placeholder?: string
     modelValue: any
+    showWorldLimit?: boolean
   }
 
   interface InputEmits extends VmodelEvent {

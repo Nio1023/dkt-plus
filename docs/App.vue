@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <dkt-input placeholder="请填写" v-model="inputTest" size="large" maxlength="10" type="textarea"></dkt-input>
+  <dkt-input placeholder="请填写" v-model="inputTest" size="large" maxlength="10" show-word-limit></dkt-input>
   {{ inputTest }}
 </template>
 <style lang="less"></style>
