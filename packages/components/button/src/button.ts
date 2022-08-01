@@ -1,18 +1,12 @@
-// import type { TupleToUni } from "@dkt-plus/utils/types";
+import { useSizeProp } from '@dkt-plus/hooks'
 
-export type buttonTyps = [
-  "default",
-  "primary",
-  "success",
-  "warning",
-  "info",
-  "danger",
-];
-
-export type buttonSizes = ["large", "default", "small"];
-
-// export interface ButtonProps {
-//   type: TupleToUni<buttonTyps>;
-//   size: TupleToUni<buttonSizes>;
-//   loading?: boolean;
-// }
+export const buttonProps = {
+  type: {
+    type: String,
+    values: ['default', 'primary', 'success', 'warning', 'info', 'danger'],
+    default: 'default'
+  },
+  size: useSizeProp,
+  loading: Boolean,
+  disabled: Boolean
+}

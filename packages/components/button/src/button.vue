@@ -4,28 +4,20 @@
   </button>
 </template>
 <script setup lang="ts">
-  import type { buttonTyps, buttonSizes } from './button'
-  import type { TupleToUni } from '@dkt-plus/utils/types'
+  import { buttonProps } from './button'
   import { computed } from 'vue'
-
-  interface ButtonProps {
-    type?: TupleToUni<buttonTyps>
-    size?: TupleToUni<buttonSizes>
-    loading?: boolean
-    disabled?: boolean
-  }
 
   defineOptions({
     name: 'DktButton'
   })
 
-  const { type = 'default', size = 'default', loading = false, disabled = false } = defineProps<ButtonProps>()
+  const props = defineProps(buttonProps)
 
   const classObject = computed(() => ({
-    ['dkt-button--' + size]: size != 'default',
-    ['dkt-button--' + type]: type != 'default',
-    loading,
-    disabled
+    ['dkt-button--' + props.size]: props.size != 'default',
+    ['dkt-button--' + props.type]: props.type != 'default',
+    loading: props.loading,
+    disabled: props.disabled
   }))
 </script>
 <style lang="less" scoped>

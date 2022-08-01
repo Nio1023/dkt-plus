@@ -1,1 +1,1 @@
-export declare type inputSizes = ['default', 'large'];
+export declare type inputSizes = ['default', 'large', 'small'];

@@ -4,10 +4,10 @@
     class="dkt-input"
     :class="[
       {
-        ['dkt-input--' + size]: size != 'default',
+        ['dkt-input--' + size]: props.size != 'default',
         'dkt-input--prepend': $slots.prepend,
         'dkt-input--append': $slots.append,
-        'is-disabled': disabled
+        'is-disabled': props.disabled
       },
       $attrs.class
     ]"
@@ -30,9 +30,9 @@
         v-bind="$attrs"
         class="dkt-input__inner"
         ref="input"
-        :type="type"
-        :disabled="disabled"
-        :placeholder="placeholder"
+        :type="props.type"
+        :disabled="props.disabled"
+        :placeholder="props.placeholder"
         @compositionstart="handleCompositionStart"
         @compositionupdate="handleCompositionUpdate"
         @compositionend="handleCompositionEnd"
@@ -42,13 +42,15 @@
         @change="handleChange"
         @keydown="handleKeydown"
       />
-      <div v-if="$slots.suffix" class="dkt-input__suffix">
+      <div v-if="suffixVisible" class="dkt-input__suffix">
         <span class="dkt-input__suffix--inner">
-          <template>
+          <template v-if="!isWordLimitVisible">
             <slot name="suffix" />
           </template>
 
-          <span></span>
+          <span v-if="isWordLimitVisible" class="dkt-input__count">
+            <span class="dkt-input__count-inner"> {{ textLength }} / {{ attrs.maxlength }} </span>
+          </span>
         </span>
       </div>
     </div>
@@ -60,8 +62,8 @@
     <textarea
       class="dkt-textarea__inner"
       ref="textarea"
-      :disabled="disabled"
-      :placeholder="placeholder"
+      :disabled="props.disabled"
+      :placeholder="props.placeholder"
       @compositionstart="handleCompositionStart"
       @compositionupdate="handleCompositionUpdate"
       @compositionend="handleCompositionEnd"
@@ -75,9 +77,9 @@
   </div>
 </template>
 <script setup lang="ts">
-  import type { inputSizes } from './input'
+  import { inputProps } from './input'
   import type { TupleToUni, VmodelEvent } from '@dkt-plus/utils'
-  import { ref, computed, shallowRef, nextTick, watch, onMounted } from 'vue'
+  import { ref, computed, shallowRef, nextTick, watch, onMounted, useSlots } from 'vue'
   import { isKorean, isNil } from '@dkt-plus/utils'
   import { UPDATE_MODEL_EVENT } from '@dkt-plus/constants'
   import { useAttrs, useCursor } from '@dkt-plus/hooks'
@@ -87,21 +89,13 @@
   const hovering = ref(false)
 
   const attrs = useAttrs()
+  const slots = useSlots()
 
   defineOptions({
     name: 'DktInput'
   })
 
   type TargetElement = HTMLInputElement | HTMLTextAreaElement
-
-  interface InputPorps {
-    type?: string
-    size?: TupleToUni<inputSizes>
-    disabled?: boolean
-    placeholder?: string
-    modelValue: any
-    showWorldLimit?: boolean
-  }
 
   interface InputEmits extends VmodelEvent {
     (e: 'input', value: string): void
@@ -115,8 +109,7 @@
     (e: 'mouseleave', event: MouseEvent): void
     (e: 'mouseenter', event: MouseEvent): void
   }
-  const props = defineProps<InputPorps>()
-  const { type = 'text', size = 'default', disabled = false, placeholder = '' } = props
+  const props = defineProps(inputProps)
 
   const input = shallowRef<HTMLInputElement>()
   const textarea = shallowRef<HTMLTextAreaElement>()
@@ -124,6 +117,16 @@
   const nativeInputValue = computed(() => (isNil(props.modelValue) ? '' : String(props.modelValue)))
 
   const _ref = computed(() => input.value || textarea.value)
+  const isWordLimitVisible = computed(
+    () =>
+      props.showWordLimit &&
+      !!attrs.value.maxlength &&
+      (props.type == 'text' || props.type == 'textarea') &&
+      !props.disabled &&
+      !props.readonly
+  )
+  const textLength = computed(() => Array.from(nativeInputValue.value).length)
+  const suffixVisible = computed(() => !!slots.suffix || isWordLimitVisible.value)
 
   const setNativeInputValue = () => {
     const input = _ref.value
